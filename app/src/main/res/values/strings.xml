@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Guessing Game</string>
+    <dimen name="button_width">130sp</dimen>
+    <dimen name="button_height">70sp</dimen>
+</resources>
