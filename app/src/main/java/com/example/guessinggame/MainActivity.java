@@ -178,13 +178,16 @@ public class MainActivity extends AppCompatActivity {
         DatabaseReference dbRef = db.getReference().child(category);
         StorageReference storageRef = storage.getReference();
         StorageReference imagesRef = storageRef.child(category);
-        if(no<=25)
-            no++;
-        if(no==26)
+
+        if(no==25)
         {
             displayScores();
         }
-            filename=no.toString()+".jpg";
+
+        if(no<25) {
+            no++;
+
+            filename = no.toString() + ".jpg";
             DatabaseReference ob = dbRef.child(Integer.toString(no));
             optionRetrieve(ob);
             StorageReference img = imagesRef.child(filename);
@@ -200,14 +203,13 @@ public class MainActivity extends AppCompatActivity {
                 }
 
             });
-
+        }
     }
 
     private void displayScores() {
         Intent intent = new Intent(this,ShowScore.class);
         intent.putExtra(EXTRA_NUMBER,score);
         startActivity(intent);
-        finish();
     }
 
     private void addPoint() {
