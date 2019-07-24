@@ -19,4 +19,12 @@ public class ShowScore extends AppCompatActivity {
         Integer sc = intent.getIntExtra(MainActivity.EXTRA_NUMBER,0);
         score_tv.setText(sc.toString());
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this,CategoryActivity.class);
+        startActivity(intent);
+        finish();
+    }
 }

@@ -214,6 +214,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this,ShowScore.class);
         intent.putExtra(EXTRA_NUMBER,score);
         startActivity(intent);
+        finish();
     }
 
     private void addPoint() {

@@ -25,5 +25,6 @@ public class CategoryActivity extends AppCompatActivity {
         else
             intent.putExtra(EXTRA_STRING,flower);
         startActivity(intent);
+        finish();
     }
 }
