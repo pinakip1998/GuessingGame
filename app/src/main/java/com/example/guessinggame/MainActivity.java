@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private Integer no= new Integer(1);
     ImageView imageView;
     ImageView imageBuffer;
+    TextView title_tv;
     Button btn1,btn2,btn3,btn4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +49,13 @@ public class MainActivity extends AppCompatActivity {
         imageView = findViewById(R.id.photo);
         imageBuffer = findViewById(R.id.image_buffer);
         imageBuffer.setVisibility(View.INVISIBLE);
+        title_tv = findViewById(R.id.title);
         spinner = findViewById(R.id.progressBar);
         spinner.setVisibility(View.INVISIBLE);
         score=0;
         Intent intent = getIntent();
         category = intent.getStringExtra(CategoryActivity.EXTRA_STRING);
+        title_tv.setText(title_tv.getText()+category);
         //First image being downloaded
         filename=no.toString()+".jpg";
         DatabaseReference dbRef = db.getReference().child(category);
