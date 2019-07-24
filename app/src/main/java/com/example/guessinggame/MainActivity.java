@@ -35,13 +35,13 @@ public class MainActivity extends AppCompatActivity {
     public FirebaseDatabase db = FirebaseDatabase.getInstance();
     public String file_url,filename,category;
     public static String[] options=new String[4];
-    public int score;
+    public int score,correct;
     String userName;
     LinearLayout linearLayout;
     ProgressBar spinner;
     private Integer no= new Integer(1);
     ImageView imageView;
-    TextView title_tv;
+    TextView title_tv,txt_correct_tv;
     Button btn1,btn2,btn3,btn4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +50,12 @@ public class MainActivity extends AppCompatActivity {
         imageView = findViewById(R.id.photo);
         title_tv = findViewById(R.id.title);
         spinner = findViewById(R.id.progressBar);
+        txt_correct_tv = findViewById(R.id.textCorrect);
         linearLayout = findViewById(R.id.linear_main);
         spinner.setVisibility(View.VISIBLE);
         linearLayout.setVisibility(View.INVISIBLE);
         score=0;
+        correct=0;
         Bundle b = getIntent().getBundleExtra("cred");
         userName = b.getString("name");
         Intent intent = getIntent();
@@ -139,8 +141,16 @@ public class MainActivity extends AppCompatActivity {
                 default: option=0;
                 break;
         }
-        if(options[0].equals(options[option]))
+        if(options[0].equals(options[option])) {
             addPoint();
+            correct++;
+            txt_correct_tv.setText(new Integer(correct).toString()+"X");
+        }
+        else
+        {
+            correct=0;
+            txt_correct_tv.setText(new Integer(correct).toString()+"X");
+        }
 
         spinner.setVisibility(View.VISIBLE);
         linearLayout.setVisibility(View.INVISIBLE);
@@ -202,6 +212,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addPoint() {
-        score+=10;
+        score=score+10+(correct*5);
     }
 }
