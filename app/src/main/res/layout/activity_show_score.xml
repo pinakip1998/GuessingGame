@@ -80,4 +80,15 @@
             />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/game_over_scores"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="164dp"
+        android:text="Button"
+        android:onClick="viewLeaderBoard"/>
 </RelativeLayout>

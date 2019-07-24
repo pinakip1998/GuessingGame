@@ -54,4 +54,8 @@ public class ShowScore extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+    public void viewLeaderBoard(View view){
+        Intent intent = new Intent(this,LeaderBoard.class);
+        startActivity(intent);
+    }
 }
