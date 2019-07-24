@@ -20,11 +20,16 @@ public class CategoryActivity extends AppCompatActivity {
     public void startGame(View view)
     {
         Intent intent = new Intent(this,MainActivity.class);
-        if(view.getId()==R.id.animal_category)
-            intent.putExtra(EXTRA_STRING,animal);
-        else
+        if(view.getId()==R.id.animal_category) {
+            Bundle cred = getIntent().getBundleExtra("cred");
+            intent.putExtra(EXTRA_STRING, animal);
+            intent.putExtra("cred", cred);
+        }
+        else{
+            Bundle cred = getIntent().getBundleExtra("cred");
             intent.putExtra(EXTRA_STRING,flower);
+            intent.putExtra("cred", cred);
+        }
         startActivity(intent);
-        finish();
     }
 }

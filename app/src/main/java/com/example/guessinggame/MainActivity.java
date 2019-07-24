@@ -26,6 +26,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import io.realm.Realm;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,8 +35,8 @@ public class MainActivity extends AppCompatActivity {
     public FirebaseDatabase db = FirebaseDatabase.getInstance();
     public String file_url,filename,category;
     public static String[] options=new String[4];
-    public static final String EXTRA_NUMBER = "com.example.guessinggame.EXTRA_NUMBER";
     public int score;
+    String userName;
     LinearLayout linearLayout;
     ProgressBar spinner;
     private Integer no= new Integer(1);
@@ -53,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         spinner = findViewById(R.id.progressBar);
         spinner.setVisibility(View.INVISIBLE);
         score=0;
+        Bundle b = getIntent().getBundleExtra("cred");
+        userName = b.getString("name");
         Intent intent = getIntent();
         category = intent.getStringExtra(CategoryActivity.EXTRA_STRING);
         title_tv.setText(title_tv.getText()+category);
@@ -73,44 +77,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    /*
-        //Second question being downloaded here
-        filename2=(new Integer(no+1).toString())+".jpg";
-        StorageReference img1 = imagesRef.child(filename2);
-        DatabaseReference ob2 = dbRef.child(new Integer(no+1).toString());
-
-        //Buffer options being loaded
-        ob2.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                buffer = dataSnapshot.getValue().toString();
-                Log.i("Value",buffer);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.e("This", "Failed to read value.", error.toException());
-            }
-        });
-        // Buffer image being fetched
-        img1.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Log.e("Tuts+", "uri: " + uri.toString());
-                //Handle whatever you're going to do with the URL here
-                file_url = uri.toString();
-                Glide.with(imageView).load(file_url).into(imageBuffer);
-                no++;
-            }
-        });*/
     }
 
-   /* private void writeToFirebase(DatabaseReference ob, String str) {
-        ob.setValue(str);
-    }*/
 
     public void optionRetrieve(DatabaseReference myRef)
     {
@@ -211,8 +179,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void displayScores() {
-        Intent intent = new Intent(this,ShowScore.class);
-        intent.putExtra(EXTRA_NUMBER,score);
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+        Player player = realm.where(Player.class).equalTo("name", userName).findFirst();
+        player.setRecentScore(score);
+        if(player.getRecentScore() > player.getMax_score()) {
+            player.setMax_score(player.getRecentScore());
+        }
+
+        //Toast.makeText(this, score, Toast.LENGTH_SHORT).show();
+        realm.commitTransaction();
+        realm.close();
+
+        Intent intent = new Intent(this, ShowScore.class);
+        Bundle b = new Bundle();
+        b.putInt("score", score);
+        b.putString("name", userName);
+        intent.putExtras(b);
         startActivity(intent);
         finish();
     }

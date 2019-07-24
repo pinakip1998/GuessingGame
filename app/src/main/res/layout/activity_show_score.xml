@@ -23,5 +23,61 @@
         android:layout_centerVertical="true"
         android:text="0"
         android:textSize="82dp" />
+    <LinearLayout
+        android:id="@+id/game_over_scores"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+        android:layout_below="@+id/score_t"
+        app:layout_constraintVertical_bias="0.132">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="High Score: "
+                android:textSize="20dp"
+                />
+
+            <TextView
+                android:id="@+id/high_score_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/play_again_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Play Again"
+            android:onClick="playAgain"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="20dp"
+            />
+
+        <Button
+            android:id="@+id/exit_game_bt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Exit Game"
+            android:onClick="exitGame"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="20dp"
+            />
+
+    </LinearLayout>
 </RelativeLayout>
