@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
     ProgressBar spinner;
     private Integer no= new Integer(1);
     ImageView imageView;
-    ImageView imageBuffer;
     TextView title_tv;
     Button btn1,btn2,btn3,btn4;
     @Override
@@ -49,11 +48,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         imageView = findViewById(R.id.photo);
-        imageBuffer = findViewById(R.id.image_buffer);
-        imageBuffer.setVisibility(View.INVISIBLE);
         title_tv = findViewById(R.id.title);
         spinner = findViewById(R.id.progressBar);
-        spinner.setVisibility(View.INVISIBLE);
+        linearLayout = findViewById(R.id.linear_main);
+        spinner.setVisibility(View.VISIBLE);
+        linearLayout.setVisibility(View.INVISIBLE);
         score=0;
         Bundle b = getIntent().getBundleExtra("cred");
         userName = b.getString("name");
@@ -74,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
                 //Handle whatever you're going to do with the URL here
                file_url = uri.toString();
                 Glide.with(imageView).load(file_url).into(imageView);
+                spinner.setVisibility(View.INVISIBLE);
+                linearLayout.setVisibility(View.VISIBLE);
             }
         });
 
