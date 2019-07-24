@@ -21,8 +21,8 @@
             />
         <Button
             android:id="@+id/animal_category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="140dp"
+            android:layout_height="60dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="169dp"
@@ -32,8 +32,8 @@
 
         <Button
             android:id="@+id/flower_category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="140dp"
+            android:layout_height="60dp"
             android:layout_above="@+id/animal_category"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"

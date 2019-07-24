@@ -6,7 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
@@ -14,14 +17,12 @@ import io.realm.RealmResults;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText name_et;
-
     private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         if (getIntent().getBooleanExtra("exit", false)) {
             finish();
         }
