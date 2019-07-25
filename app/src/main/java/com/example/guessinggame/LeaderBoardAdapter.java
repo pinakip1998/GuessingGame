@@ -35,11 +35,11 @@ public class LeaderBoardAdapter extends RecyclerView.Adapter<LeaderBoardAdapter.
     public void onBindViewHolder(@NonNull LeaderBoardAdapter.LeaderBoardViewHolder holder, int position) {
         Player player = playerResults.get(position);
         if(position==0)
-            holder.leader_board_bg.setBackgroundColor(Color.parseColor("#F5B041"));
+            holder.leader_board_bg.setBackgroundResource(R.drawable.gold);
         else if(position==1)
-            holder.leader_board_bg.setBackgroundColor(Color.parseColor("#AAB7B8"));
+            holder.leader_board_bg.setBackgroundResource(R.drawable.silver);
         else if(position==2)
-            holder.leader_board_bg.setBackgroundColor(Color.parseColor("#E59866"));
+            holder.leader_board_bg.setBackgroundResource(R.drawable.bronze);
         holder.name.setText(player.getName());
         holder.score.setText(String.valueOf(player.getRecentScore()));
         holder.maxScore.setText(String.valueOf(player.getMax_score()));

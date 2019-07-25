@@ -217,7 +217,6 @@ public class MainActivity extends AppCompatActivity {
         b.putString("name", userName);
         intent.putExtras(b);
         startActivity(intent);
-        finish();
     }
 
     private void addPoint() {
