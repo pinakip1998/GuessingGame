@@ -35,13 +35,13 @@ public class MainActivity extends AppCompatActivity {
     public FirebaseDatabase db = FirebaseDatabase.getInstance();
     public String file_url,filename,category;
     public static String[] options;
-    public int score,correct;
+    public int score,correct,lives;
     String userName;
     LinearLayout linearLayout;
     ProgressBar spinner;
     private Integer no= new Integer(1);
     ImageView imageView;
-    TextView title_tv,txt_correct_tv;
+    TextView title_tv,txt_correct_tv,txt_lives;
     Button btn1,btn2,btn3,btn4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +53,12 @@ public class MainActivity extends AppCompatActivity {
         spinner = findViewById(R.id.progressBar);
         txt_correct_tv = findViewById(R.id.textCorrect);
         linearLayout = findViewById(R.id.linear_main);
+        txt_lives = findViewById(R.id.textLives);
         spinner.setVisibility(View.VISIBLE);
         linearLayout.setVisibility(View.INVISIBLE);
         score=0;
         correct=0;
+        lives=5;
         Bundle b = getIntent().getBundleExtra("cred");
         userName = b.getString("name");
         Intent intent = getIntent();
@@ -150,6 +152,11 @@ public class MainActivity extends AppCompatActivity {
         else
         {
             correct=0;
+            if(lives==0)
+                displayScores();
+            else
+                lives--;
+            txt_lives.setText(new Integer(lives).toString());
             txt_correct_tv.setText(new Integer(correct).toString()+"X");
         }
 
