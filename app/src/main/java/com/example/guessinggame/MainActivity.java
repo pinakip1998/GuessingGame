@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     public FirebaseStorage storage = FirebaseStorage.getInstance();
     public FirebaseDatabase db = FirebaseDatabase.getInstance();
     public String file_url,filename,category;
-    public static String[] options=new String[4];
+    public static String[] options;
     public int score,correct;
     String userName;
     LinearLayout linearLayout;
@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        options= new String[]{"", "", "", "", ""};
         imageView = findViewById(R.id.photo);
         title_tv = findViewById(R.id.title);
         spinner = findViewById(R.id.progressBar);
