@@ -247,6 +247,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         b.putString("name", userName);
         intent.putExtras(b);
         startActivity(intent);
+        finish();
     }
 
     private void addPoint() {
