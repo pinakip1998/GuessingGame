@@ -180,9 +180,10 @@ public class MainActivity extends AppCompatActivity {
                     Log.e("Tuts+", "uri: " + uri.toString());
                     //Handle whatever you're going to do with the URL here
                     file_url = uri.toString();
-                    linearLayout.setVisibility(View.VISIBLE);
-                    spinner.setVisibility(View.INVISIBLE);
                     Glide.with(imageView).load(file_url).into(imageView);
+                    spinner.setVisibility(View.INVISIBLE);
+                    linearLayout.setVisibility(View.VISIBLE);
+
                 }
 
             });
