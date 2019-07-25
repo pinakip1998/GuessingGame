@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Guessing Game</string>
+    <string name="open_menu">open</string>
+    <string name="close_menu">close</string>
     <dimen name="button_width">130sp</dimen>
     <dimen name="button_height">70sp</dimen>
 </resources>
